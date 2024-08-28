@@ -1,0 +1,43 @@
+code {
+    height: 500px;
+    overflow-y: scroll;
+    background: #0f172a;
+    background: var(--color-preview-background);
+    border-radius: 5px;
+    border: 1px solid var(--color-preview-border);
+    padding: 2rem;
+    display: block;
+}
+
+pre {
+    display: block;
+    font-family: monospace;
+    white-space: pre;
+    margin: 1em 0px;
+}
+
+code::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+}
+
+code::-webkit-scrollbar-track {
+    background: var(--track-color);
+    border-radius: var(--scrollbar-border-radius);
+}
+
+code::-webkit-scrollbar-thumb {
+    background: var(--thumb-color);
+    border-radius: var(--scrollbar-thumb-border-width);
+}
+
+.is-gradient::-webkit-scrollbar-thumb {
+    background: linear-gradient(360deg, var(--thumb-color) 15%, var(--thumb-color-two));
+    border-radius: var(--scrollbar-thumb-border-width);
+}
+
+@supports not selector(::-webkit-scrollbar) {
+    code {
+        scrollbar-color: var(--thumb-color)
+        var(--track-color);
+    }
+}
