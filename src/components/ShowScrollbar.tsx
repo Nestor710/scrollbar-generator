@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../assets/css/ShowScrollbar.css'
 import scrollbarStore from '../store/scrollbarStore'
 
@@ -15,6 +15,16 @@ const ShowScrollbar = () => {
   } = scrollbarStore(state => state)
 
   const [copyLabel, setcopyLabel] = useState('Copy');
+
+  useEffect(() => {
+    const code = document.querySelector('code') as HTMLElement
+    code.style.setProperty('--thumb-color', thumbColor)
+    code.style.setProperty('--thumb-color-two', thumbColorTwo)
+    code.style.setProperty('--track-color', trackColor)
+    code.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`)
+    code.style.setProperty('--scrollbar-border-radius', `${scrollRadius}px`)
+    code.style.setProperty('--scrollbar-thumb-border-width', `${scrollBorderWidth}px`)
+  },[thumbColor, thumbColorTwo, trackColor, scrollbarWidth, scrollRadius, scrollBorderWidth])
 
   const copyTextToClipboard = () => {
     const code = document.querySelector('code') as HTMLElement
@@ -40,14 +50,6 @@ const ShowScrollbar = () => {
       <div className="flex flex-col gap-y-3">
         <code 
         className={`${isGradient ? 'is-gradient' : ''} text-left`}
-        style={{
-          '--thumb-color': thumbColor,
-          '--thumb-color-two': thumbColorTwo,
-          '--track-color': trackColor,
-          '--scrollbar-width': `${scrollbarWidth}px`,
-          '--scrollbar-border-radius': `${scrollRadius}px`,
-          '--scrollbar-thumb-border-width': `${scrollBorderWidth}px`,
-        }}
         >
           <pre>
             {`body {

@@ -68,7 +68,6 @@ const CustomScrollbarSetting = () => {
                     <div>
                         <select className="bg-gray-500 border border-gray-600 text-gray-200 py-1 px-2 rounded-md" value={isGradient} onChange={ (e) => {setIsGradient(Number(e.target.value))}}>
                             <option defaultValue="select">Select</option>
-                            <hr />
                             <option value={1}>Yes</option>
                             <option value={0}>No</option>
                         </select>
@@ -108,7 +107,7 @@ const CustomScrollbarSetting = () => {
                         {
                             colorPicker.track &&
                                 <div className="flex flex-row justify-between absolute z-10" style={{ margin: '0.3rem 0' }}>
-                                    <ChromePicker color={thumbColor} onChange={(color) => handleSetColorPicker(color, 'track')} />
+                                    <ChromePicker color={trackColor} onChange={(color) => handleSetColorPicker(color, 'track')} />
                                 </div>
                         }
                     </div>
